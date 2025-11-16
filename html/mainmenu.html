@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="Utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE-edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu</title>
+
+ 
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+  <link rel="stylesheet" href="../css/mainmenu.css">
+
+ 
+  <script src="../js/submenu.js"></script>
+</head>
+
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="logo-area">
+        <div class="logo-box">
+          📘
+        </div>
+      </div>
+
+      <div class="user-area">
+        <div class="user-initials">JD</div>
+        <div class="user-info">
+          <span class="user-name">John Doe</span>
+          <span class="user-email">you@example.com</span>
+        </div>
+        <button class="btn-outline">Log Out</button>
+      </div>
+    </header>
+
+    <main class="dashboard">
+      <section class="stats-row">
+        <article class="stat-card">
+          <header class="stat-header">
+            <span class="stat-title">Total Links</span>
+            <span class="stat-icon">🔗</span>
+          </header>
+          <p class="stat-value">0</p>
+        </article>
+
+        <article class="stat-card">
+          <header class="stat-header">
+            <span class="stat-title">Categories</span>
+            <span class="stat-icon">👥</span>
+          </header>
+          <p class="stat-value">0</p>
+        </article>
+
+        <article class="stat-card">
+          <header class="stat-header">
+            <span class="stat-title">This Week</span>
+            <span class="stat-icon">📅</span>
+          </header>
+          <p class="stat-value">0</p>
+        </article>
+      </section>
+
+      <section class="content-header">
+        <div>
+          <h1 class="page-title">Study Links</h1>
+          <p class="page-subtitle">Manage and organize your study resources</p>
+        </div>
+
+        <button class="btn-add" id="openAddLink">
+          <span class="btn-add-icon">＋</span>
+          <span>Add Link</span>
+        </button>
+      </section>
+
+      <section class="links-area">
+     
+      </section>
+    </main>
+  </div>
+
+
+  <div id="addLinkModal" class="modal hidden" style="display: none;">
+    <div class="modal-backdrop"></div>
+
+    <div class="modal-panel">
+      <div class="modal-header">
+        <div>
+          <h2 class="modal-title">Add New Study Link</h2>
+          <p class="modal-subtitle">Add a new resource to your study collection</p>
+        </div>
+        <button id="closeAddLink" class="modal-close-btn">✕</button>
+      </div>
+
+      <form id="addLinkForm" class="modal-form">
+        <label class="field-label">
+          Title
+          <input
+            type="text"
+            name="title"
+            class="field-input"
+            placeholder="e.g., Advanced Calculus Tutorial"
+            required
+          />
+        </label>
+
+        <label class="field-label">
+          URL
+          <input
+            type="url"
+            name="url"
+            class="field-input"
+            placeholder="https://example.com"
+            required
+          />
+        </label>
+
+        <label class="field-label">
+          Category
+          <select name="category" class="field-input">
+            <option value="General">General</option>
+            <option value="Math">Math</option>
+            <option value="CS">Computer Science</option>
+            <option value="Physics">Physics</option>
+            <option value="Other">Other</option>
+          </select>
+        </label>
+
+        <label class="field-label">
+          Description (Optional)
+          <textarea
+            name="description"
+            class="field-input"
+            rows="2"
+            placeholder="Brief description of the course"
+          ></textarea>
+        </label>
+
+        <button type="submit" class="modal-submit-btn">
+          Add Link
+        </button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
