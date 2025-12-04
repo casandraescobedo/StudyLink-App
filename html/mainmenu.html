@@ -6,13 +6,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Menu</title>
 
- 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 
   <link rel="stylesheet" href="../css/mainmenu.css">
 
- 
+  <!-- ⭐ Updated Styling (white + Bubble Style + 250px Width) -->
+  <style>
+    /* Make stat cards wider + larger + cherry blossom pink + bubble style */
+    .stat-card {
+      width: 250px;
+      min-width: 250px;
+
+      transform: scale(1.15);
+      transform-origin: top left;
+
+      background-color: #ffffff; /* White */
+
+      /* Bubble style */
+      border-radius: 22px;                   
+      border: 2px solid #c8c8c8;             /* slightly darker sakura border */
+      box-shadow: 0 6px 12px rgba(124, 117, 121, 0.4); /* blossom glow */
+      padding: 1.4rem;
+      transition: 0.25s ease;
+    }
+
+    /* Bubble hover effect */
+    .stat-card:hover {
+      transform: scale(1.20);
+      box-shadow: 0 10px 20px rgba(138, 127, 132, 0.55);
+    }
+
+    /* Fix spacing so they do not overlap after scaling */
+    .stats-row {
+      display: flex;
+      gap: 4.5rem;
+      margin-bottom: 2rem;
+    }
+  </style>
+
   <script src="../js/submenu.js"></script>
 </head>
 
@@ -75,11 +106,9 @@
       </section>
 
       <section class="links-area">
-     
       </section>
     </main>
   </div>
-
 
   <div id="addLinkModal" class="modal hidden" style="display: none;">
     <div class="modal-backdrop"></div>
