@@ -1,68 +1,88 @@
-# StudyLink: Collaborative Study Group Platform
+# StudyLink
 
- # Project Overview
+[cite_start]**StudyLink** is a mobile web application platform designed for students to find or create study groups for specific subjects, courses, or upcoming exams[cite: 3]. [cite_start]The goal is to allow students to connect with others who share their academic goals, providing opportunities for better networking, improved grades, and socializing[cite: 3].
 
-StudyLink is a mobile web application designed to connect students by facilitating the creation and discovery of collaborative study groups for specific subjects, courses, or upcoming exams. Our mission is to combat academic isolation and provide new opportunities for networking, achieving better grades, and making new friends within the academic community.
+## 📋 Project Status
+* [cite_start]**Target Release:** V1.0 - Initial Launch [cite: 2]
+* [cite_start]**Platform:** Mobile Web App [cite: 1]
 
-# Team Members
+## 🚀 Key Features
+[cite_start]The application focuses on the following core functionalities (CRUD)[cite: 12]:
 
-Casandra Escobedo
-Julissa Gonzalez
-Carlos Rivas
-Cynthia Marin
+### Core Functionality
+* [cite_start]**Create Sessions:** Students can create new study sessions including title, description, course tags, date, time, and location (physical or virtual)[cite: 14, 15, 16].
+* [cite_start]**Browse & Filter:** Users can browse existing sessions on a dashboard and filter by subject, date, or tags to find relevant groups[cite: 22, 23].
+* **Session Management:**
+    * [cite_start]Creators can update meeting details, notes, or resources[cite: 26].
+    * [cite_start]The system automatically marks sessions as "Past" after the meeting date[cite: 30].
+* **Social Interaction:**
+    * [cite_start]Users can join sessions (public, private, or campus-only)[cite: 18].
+    * [cite_start]**Bonus:** Members can like or save shared notes and summaries for future reference[cite: 31, 32].
 
-# Technology Stack
+## 🛠 Technology Stack
 
-Backend / API: Django (Python)
-Frontend: HTML5, CSS, JavaScript
-Styling: Custom CSS / Tailwind (TBD)
-Version Control: Git / GitHub
+### Back End
+* [cite_start]**Framework:** Django [cite: 8]
+* [cite_start]**Authentication:** `django.contrib.auth` (Email/Username & Password) [cite: 36]
+* **Database:**
+    * [cite_start]**Development:** SQLite [cite: 36]
+    * [cite_start]**Production:** PostgreSQL [cite: 36]
 
-# Agile Planning: V1.0 - Initial Launch
+### Front End
+* [cite_start]**Languages:** HTML, CSS, JavaScript [cite: 7]
+* [cite_start]**Templating:** Django Templates (DTL) [cite: 36]
 
-We are organizing development using one-week Sprints, focusing on delivering core functionality (CRUD operations) first.
+## ⚙️ Installation & Setup
 
-# Product Backlog (Prioritized User Stories)
+To run this project locally, follow these steps:
 
-Here are the key features prioritized for development:
+1.  **Clone the repository**
+    ```bash
+    git clone [https://github.com/casandraescobedo/StudyLink-App.git](https://github.com/casandraescobedo/StudyLink-App.git)
+    cd StudyLink-App
+    ```
 
-# High Priority:
+2.  **Create a Virtual Environment**
+    ```bash
+    # Windows
+    python -m venv venv
+    venv\Scripts\activate
 
-Create Session: User can organize a study group with all necessary details (time, location, capacity).
+    # macOS/Linux
+    python3 -m venv venv
+    source venv/bin/activate
+    ```
 
-Browse/Filter Sessions: User can find a relevant group to join via search and filters.
+3.  **Install Dependencies**
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-Basic User Auth: User can securely log in and register.
+4.  **Apply Migrations**
+    ```bash
+    python manage.py migrate
+    ```
 
-Join/Leave Session: User can participate in a group and manage their membership.
+5.  **Run the Server**
+    ```bash
+    python manage.py runserver
+    ```
 
-# Medium Priority:
-5. Update Session Details: Creator can keep the group updated with edits and new resources.
-6. Session Lifecycle: Sessions are automatically or manually marked as "Past" after completion.
-7. Share and Save Notes: User can share notes and save/like resources for later reference (Bonus Feature).
+6.  **Access the App**
+    Open your browser and navigate to `http://127.0.0.1:8000/`.
 
-# Proposed Sprint Structure
+## 👥 Contributors
 
-# Sprint 1: Foundation & Creation
+* [cite_start]**Casandra Escobedo** [cite: 2]
+* [cite_start]**Julissa Gonzalez** [cite: 2]
+* [cite_start]**Carlos Rivas** [cite: 2]
+* [cite_start]**Cynthia Marin** [cite: 2]
 
-Goal: Establish the backend data structure, implement user authentication, and enable session creation.
+## 🔮 Future Work (V2.0)
+[cite_start]The following features were considered but descoped for the V1.0 launch[cite: 38]:
+* [cite_start]**Capacity Limits:** Implementing strict maximum capacity logic for groups[cite: 39].
+* [cite_start]**Advanced Maps:** Interactive map integration for physical locations (currently handled via text/links)[cite: 36].
+* [cite_start]**Social Login:** OAuth integration for Google/Facebook login[cite: 36].
 
-Activities:
-Setup initial Django Models (User, Session, Group Membership).
-Implement User Registration and Login endpoints and frontend forms.
-Develop the "Create Session" form and backend logic.
-Implement the logic to automatically flag sessions that have passed their meeting time.
-
-Definition of Done (DOD): Users can log in and successfully create a new study session that is properly timestamped in the database.
-
-# Sprint 2: Reading & Joining
-
-Goal: Implement the discovery and joining functionalities, allowing users to interact with existing sessions.
-
-Activities:
-Develop the Main Dashboard view (displaying all upcoming session cards).
-Implement Search and Filtering functionality (by subject, date, and tag).
-Develop the "Join Session" and "Leave Session" core logic.
-Develop the form and logic for creators to edit their sessions.
-
-Definition of Done (DOD): Users can view the dashboard, apply filters, and successfully join any available session.
+---
+*Generated based on Technical Design Document - V1.0*
