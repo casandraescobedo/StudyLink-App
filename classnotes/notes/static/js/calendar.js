@@ -1,7 +1,7 @@
  $(document).ready(function() {
         $('#Register').click(function() {
         event.preventDefault(); 
-        window.location.href = '../html/registercalendar.html'; 
+        window.location.href = '../html/register.html'; 
         });
 
         $('#Login').click(function() {

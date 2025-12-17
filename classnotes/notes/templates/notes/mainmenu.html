@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="{% static 'css/mainmenu.css' %}">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="logo-area">
+    <div class="logo-box">SL</div>
+    <span class="logo-text">Study Links</span>
+  </div>
+
+  <div class="user-area">
+    <div class="user-pill">
+      <div class="avatar-circle">{{ request.user.username|first|upper }}</div>
+      <span class="username">{{ request.user.username }}</span>
+    </div>
+
+    <form method="post" action="{% url 'logout' %}" style="margin:0;">
+      {% csrf_token %}
+      <button type="submit" class="logout-btn">Log Out</button>
+    </form>
+  </div>
+</header>
+
+<main class="dashboard">
+
+  <section class="stats-row">
+    <div class="stat-card">
+      <div class="stat-header">
+        <span class="stat-title">Total Notes</span>
+        <span class="stat-icon">📝</span>
+      </div>
+      <div class="stat-value">{{ total_notes }}</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-header">
+        <span class="stat-title">Categories</span>
+        <span class="stat-icon">👥</span>
+      </div>
+      <div class="stat-value">{{ categories_count }}</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-header">
+        <span class="stat-title">This Week</span>
+        <span class="stat-icon">📅</span>
+      </div>
+      <div class="stat-value">{{ this_week_count }}</div>
+    </div>
+  </section>
+
+  <section class="notes-header">
+    <div>
+      <h2>Study Links</h2>
+      <p>Manage and organize your study resources</p>
+    </div>
+
+    <a href="{% url 'note_create' %}" class="add-note-btn">+ Add Note</a>
+  </section>
+
+  <section class="notes-list">
+    {% if notes %}
+      <ul class="notes-grid">
+        {% for note in notes %}
+          <li class="note-card">
+            <h3>{{ note.title }}</h3>
+            <p>{{ note.description }}</p>
+
+            {% if note.url %}
+              <a href="{{ note.url }}" target="_blank" class="note-link">Open link</a>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="empty-state">
+        No notes yet. Click <strong>“Add Note”</strong> to create one.
+      </p>
+    {% endif %}
+  </section>
+
+</main>
+</body>
+</html>

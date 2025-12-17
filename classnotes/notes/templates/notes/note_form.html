@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Add Study Link</title>
+  <link rel="stylesheet" href="{% static 'css/mainmenu.css' %}">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="logo-area">
+    <div class="logo-box">SL</div>
+    <span class="logo-text">Study Links</span>
+  </div>
+
+  <div class="user-area">
+    <div class="user-pill">
+      <div class="avatar-circle">{{ request.user.username|first|upper }}</div>
+      <span class="username">{{ request.user.username }}</span>
+    </div>
+
+    <form method="post" action="{% url 'logout' %}" style="margin:0;">
+      {% csrf_token %}
+      <button type="submit" class="logout-btn">Log Out</button>
+    </form>
+  </div>
+</header>
+
+<main class="dashboard">
+  <section class="note-create">
+    <div class="note-modal">
+      <div class="note-modal-header">
+        <h2 class="note-modal-title">Add New Study Link</h2>
+        <p class="note-modal-subtitle">Add a new resource to your study collection</p>
+      </div>
+
+      <form method="post" class="note-modal-form">
+        {% csrf_token %}
+
+        <div class="field">
+          <label for="{{ form.title.id_for_label }}">Title</label>
+          {{ form.title }}
+          {{ form.title.errors }}
+        </div>
+
+        <div class="field">
+          <label for="{{ form.url.id_for_label }}">URL</label>
+          {{ form.url }}
+          {{ form.url.errors }}
+        </div>
+
+        <div class="field">
+          <label for="{{ form.category.id_for_label }}">Category</label>
+          {{ form.category }}
+          {{ form.category.errors }}
+        </div>
+
+        <div class="field">
+        <label for="{{ form.due_date.id_for_label }}">Due on</label>
+        {{ form.due_date }}
+        {{ form.due_date.errors }}
+        </div>
+
+        <div class="field">
+          <label for="{{ form.content.id_for_label }}">Description (Optional)</label>
+          {{ form.content }}
+          {{ form.content.errors }}
+        </div>
+
+        <button type="submit" class="note-modal-btn">Add Link</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+</body>
+</html>

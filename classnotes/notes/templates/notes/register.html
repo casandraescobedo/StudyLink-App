@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <link rel="stylesheet" href="{% static 'css/stylewebregister.css' %}">
+</head>
+
+<body class="auth-page">
+  <div class="Register-title">Study Links</div>
+
+  <div class="auth-card">
+    <h1 class="auth-title">Register</h1>
+
+    <form method="post">
+      {% csrf_token %}
+
+      <div class="auth-field">
+        <input
+          class="auth-input"
+          type="text"
+          name="username"
+          placeholder="Put Your Username"
+          value="{{ form.username.value|default:'' }}"
+          required
+        >
+      </div>
+
+      <div class="auth-field">
+        <input
+          class="auth-input"
+          type="password"
+          name="password1"
+          placeholder="Introduce Password"
+          required
+        >
+      </div>
+
+      <div class="auth-field">
+        <input
+          class="auth-input"
+          type="password"
+          name="password2"
+          placeholder="Confirm Password"
+          required
+        >
+      </div>
+
+      <button type="submit" class="auth-button">Create Account</button>
+
+      <div class="auth-footer">
+        Already have an account? <a href="{% url 'login' %}">Login</a>
+      </div>
+
+      {% if form.errors %}
+        <div style="margin-top:14px; font-size:14px; color:#ffffff;">
+          {{ form.errors }}
+        </div>
+      {% endif %}
+    </form>
+  </div>
+</body>
+</html>
