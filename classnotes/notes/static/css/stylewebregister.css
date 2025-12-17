@@ -102,13 +102,20 @@
   text-shadow: 0 12px 30px rgba(255, 77, 141, 0.35);
 }
 
-.auth-input{
+.auth-input {
   width: 100%;
   padding: 14px 18px;
   border: none;
   outline: none;
-  border-radius: 9999px; /* THIS is what makes it circular */
-  background: #eaf2ff;   /* match your login */
+  border-radius: 9999px;
+  background: #eaf2ff;
   font-size: 16px;
+  color: #333;
   box-sizing: border-box;
+}
+
+
+.auth-input:focus {
+  background: #eaf2ff;
+  color: #333;
 }
