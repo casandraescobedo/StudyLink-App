@@ -4,7 +4,7 @@
 
 ## 📋 Project Status
 * **Target Release:** V1.0 - Initial Launch
-* **Platform:** Mobile Web App
+* **Platform:** Web App
 
 ## 🚀 Key Features
 The application focuses on the following core functionalities:
