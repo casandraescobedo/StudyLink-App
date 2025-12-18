@@ -460,3 +460,45 @@ a {
 .trash-btn:hover{
   opacity: 0.9;
 }
+
+.filter-tabs {
+  display: flex;
+  gap: 10px;
+  margin: 12px 0 18px;
+}
+
+.filter-tab {
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.filter-tab.active {
+  background: #ffe6ef;
+}
+
+
+.public-badge {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 14px;
+  background-color: #ffe6ef;
+  color: #c2185b;
+  font-weight: 600;
+}
+
+.edit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 12px;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.45);
+}

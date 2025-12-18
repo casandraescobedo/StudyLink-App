@@ -13,7 +13,7 @@
   <header class="topbar">
     <div class="logo-area">
       <div class="logo-box">SL</div>
-      <span class="logo-text">Study Links</span>
+      <span class="logo-text">Study Link</span>
     </div>
 
     <div class="user-area">
@@ -64,76 +64,100 @@
     <!-- Header section -->
     <section class="notes-header">
       <div>
-        <h2>Study Links</h2>
+        <h2>Study Link</h2>
         <p>Manage and organize your study resources</p>
       </div>
 
+      <div class="filter-tabs">
+        <a href="{% url 'notes_list' %}?filter=all"
+           class="filter-tab {% if active_filter == 'all' %}active{% endif %}">
+          All
+        </a>
+      
+        <a href="{% url 'notes_list' %}?filter=mine"
+           class="filter-tab {% if active_filter == 'mine' %}active{% endif %}">
+          My Notes
+        </a>
+      
+        <a href="{% url 'notes_list' %}?filter=public"
+           class="filter-tab {% if active_filter == 'public' %}active{% endif %}">
+          Public
+        </a>
+      </div>
+      
       <a href="{% url 'note_create' %}" class="add-note-btn">
         + Add Link
       </a>
     </section>
 
-    <!-- Notes grid -->
-    <section class="notes-list">
-      {% if notes %}
-        <ul class="notes-grid">
-          {% for note in notes %}
-            <li class="note-card">
+        <!-- Notes grid -->
+<section class="notes-list">
+  {% if notes %}
+    <ul class="notes-grid">
+      {% for note in notes %}
+        <li class="note-card">
 
-              <h3>{{ note.title }}</h3>
+          <h3>{{ note.title }}</h3>
 
-              <!-- Category -->
-              {% if note.category %}
-                <p class="note-meta"><strong>Category:</strong> {{ note.category }}</p>
-              {% endif %}
+          {% if note.category %}
+            <p class="note-meta"><strong>Category:</strong> {{ note.category }}</p>
+          {% endif %}
 
-              <!-- Description -->
-              {% if note.content %}
-                <p>{{ note.content }}</p>
-              {% endif %}
+          <p class="note-meta">
+            <strong>By:</strong> {{ note.owner.username }}
+          </p>
 
-              <!-- Dates -->
-              {% if note.start_date %}
-                <p class="note-meta"><strong>Start:</strong> {{ note.start_date|date:"M d, Y" }}</p>
-              {% endif %}
+          {% if note.is_public %}
+            <span class="public-badge">🌍 Public</span>
+          {% endif %}
 
-              {% if note.due_date %}
-                <p class="note-meta"><strong>Due:</strong> {{ note.due_date|date:"M d, Y" }}</p>
-              {% endif %}
+          {% if note.content %}
+            <p>{{ note.content }}</p>
+          {% endif %}
 
-              {% if note.created_at %}
-                <p class="note-meta">
-                  Saved on: {{ note.created_at|date:"M d, Y H:i" }}
-                </p>
-              {% endif %}
+          {% if note.start_date %}
+            <p class="note-meta"><strong>Start:</strong> {{ note.start_date|date:"M d, Y" }}</p>
+          {% endif %}
 
-              <!-- Actions -->
-             <div class="note-actions">
-  {% if note.url %}
-    <a href="{{ note.url }}" target="_blank" rel="noopener noreferrer" class="note-link">
-      Open Link
-    </a>
+          {% if note.due_date %}
+            <p class="note-meta"><strong>Due:</strong> {{ note.due_date|date:"M d, Y" }}</p>
+          {% endif %}
+
+          {% if note.created_at %}
+            <p class="note-meta">
+              Saved on: {{ note.created_at|date:"M d, Y H:i" }}
+            </p>
+          {% endif %}
+
+          <div class="note-actions">
+            {% if note.url %}
+              <a href="{{ note.url }}" target="_blank" rel="noopener noreferrer" class="note-link">
+                Open Link
+              </a>
+            {% endif %}
+          
+
+            {% if note.owner == request.user %}
+              <a href="{% url 'note_edit' note.pk %}" class="edit-btn">✏️</a>
+
+              <form method="post" action="{% url 'note_delete' note.pk %}">
+                {% csrf_token %}
+                <button type="submit" class="trash-btn" aria-label="Delete">🗑️</button>
+              </form>
+            {% endif %}
+          </div>
+
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="empty-state">
+      You don’t have any study links yet.<br>
+      Click <strong>Add Link</strong> to create your first one.
+    </p>
   {% endif %}
-
-  <form method="post" action="{% url 'note_delete' note.id %}">
-    {% csrf_token %}
-    <button type="submit" class="trash-btn" aria-label="Delete">
-      🗑️
-    </button>
-  </form>
-</div>
-
-            </li>
-          {% endfor %}
-        </ul>
-      {% else %}
-        <p class="empty-state">
-          You don’t have any study links yet.<br>
-          Click <strong>Add Link</strong> to create your first one.
-        </p>
-      {% endif %}
-    </section>
-
+</section>
+        
   </main>
 </body>
 </html>

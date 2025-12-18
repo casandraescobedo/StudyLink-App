@@ -23,7 +23,7 @@ class NoteForm(forms.ModelForm):
 
     class Meta:
         model = Note
-        fields = ["title", "url", "category", "start_date", "due_date", "content"]
+        fields = ["title", "url", "category", "start_date", "due_date", "content", "is_public"]
         widgets = {
             "title": forms.TextInput(attrs={"placeholder": "e.g., Advanced Calculus Tutorial"}),
             "url": forms.URLInput(attrs={"placeholder": "https://example.com"}),

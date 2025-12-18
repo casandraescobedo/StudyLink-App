@@ -31,7 +31,9 @@
   <section class="note-create">
     <div class="note-modal">
       <div class="note-modal-header">
-        <h2 class="note-modal-title">Add New Study Link</h2>
+        <h2 class="note-modal-title">Add New Study Link
+          {% if is_edit %}Edit Study Link{% else %}Add New Study Link{% endif %}
+        </h2>
         <p class="note-modal-subtitle">Add a new resource to your study collection</p>
       </div>
 
@@ -67,6 +69,13 @@
           {{ form.content }}
           {{ form.content.errors }}
         </div>
+
+        <div class="field checkbox-field">
+          <label>
+            {{ form.is_public }}
+            Make this link public
+          </label>
+        </div>        
 
         <button type="submit" class="note-modal-btn">Add Link</button>
       </form>

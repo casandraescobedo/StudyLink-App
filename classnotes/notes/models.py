@@ -13,6 +13,7 @@ class Note(models.Model):
     due_date = models.DateField(blank=True, null=True)
 
     content = models.TextField(blank=True)  # description (optional)
+    is_public = models.BooleanField(default = False)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
